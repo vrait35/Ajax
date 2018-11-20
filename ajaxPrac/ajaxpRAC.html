@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AJAX</title>
+	</head>
+	<body>	
+		<p id='mp'>Test test</p>
+		<p id='myresult'></p>
+		<select id="sel">
+			<option></option>
+			<option value="1">-------1</option>
+			<option value="2">-------2</option>
+			<option value="3">-------3</option>
+		</select>
+	</body>
+<!--
+	<form action="#" method="POST">
+		<input type="text" name='myname'>
+		<input type="text" name="age">
+		<button type="submit">click</button>
+	</form>
+-->
+	<script type="text/javascript">
+		console.log('sdfjh');
+sel.onchange=function(){
+	console.log(this.value);
+	xhr = new XMLHttpRequest();
+			xhr.open("GET", this.value+".txt", true);
+			xhr.send();
+
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 &&  xhr.status==200){
+					myresult.innerHTML=xhr.response;
+					//alert(xhr.response);
+				}
+			}
+}
+		
+
+
+
+	</script>
+</html>

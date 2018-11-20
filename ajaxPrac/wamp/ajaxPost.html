@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AJAX</title>
+	</head>
+	<body>
+		<p id='mp'>Test test</p>
+		<p id='myresult'></p>
+		<select id="sel">
+			<option></option>
+			<option value="1">-------1</option>
+			<option value="2">-------2</option>
+			<option value="3">-------3</option>
+		</select>
+
+		<input type="text" name='name' id="inpname">
+	</body>
+<!--
+	<form action="#" method="POST">
+		<input type="text" name='myname'>
+		<input type="text" name="age">
+		<button type="submit">click</button>
+	</form>
+-->
+	<script type="text/javascript">
+		function sendAjax(myval) {
+			xhr = new XMLHttpRequest();
+			xhr.open("POST", "my.php", true);
+
+			asd = 'name=' + encodeURIComponent(inpname.value);
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+			xhr.timeout = 5000;
+			xhr.send(asd);
+
+			xhr.onreadystatechange = function() {
+				if ((xhr.readyState == 4) && (xhr.status == 200)) {
+					myresult.innerHTML = xhr.response;
+				}
+			}
+		}
+
+		inpname.onkeyup = function() {
+			sendAjax(this.value);
+		}
+/*
+		sel.onchange = function() {
+			console.log(this.value);
+
+			
+		}
+*/
+		mp.onclick = function() {
+		/*
+			txt1 = "1111111";
+			txt2 = "2222222";
+			txt3 = "3333333";
+		*/
+
+			a = "123";
+			
+			xhr.open("GET", "my.php?name="+this.value, true);
+		}
+	</script>
+</html>
